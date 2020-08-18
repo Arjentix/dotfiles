@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,7 @@ export ZSH="/home/arjentix/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gitster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,9 +115,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias cl="clear"
-alias gtoday="glog --since="6am" --author="$(git config user.email)""
-alias gnotpushed="git log origin/$(git rev-parse --abbrev-ref HEAD)..$(git rev-parse --abbrev-ref HEAD)"
+alias gtoday='glog --since="6am" --author="$(git config user.email)"'
+alias gnotpushed='git log origin/$(git rev-parse --abbrev-ref HEAD)..$(git rev-parse --abbrev-ref HEAD)'
 
+export EDITOR=vim
 export JAVA_HOME=/usr/lib/jvm/java-14-openjdk
 export JDK_HOME=/usr/lib/jvm/java-14-openjdk
 export PATH=/home/arjentix/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/java-13-openjdk/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
