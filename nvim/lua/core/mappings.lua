@@ -231,4 +231,19 @@ maps.n["<leader>uw"] = { function() astronvim.ui.toggle_wrap() end, desc = "Togg
 maps.n["<leader>uy"] = { function() astronvim.ui.toggle_syntax() end, desc = "Toggle syntax highlight" }
 maps.n["<leader>uN"] = { function() astronvim.ui.toggle_ui_notifications() end, desc = "Toggle UI notifications" }
 
+function change_leader(map)
+  if vim.g.neovide == nil then
+    return map
+  end
+
+  local new_map = {}
+  for k,v in pairs(map) do
+    local new_key = string.gsub(k, "<leader>", "<D-") .. ">"
+    new_map[new_key] = v
+  end
+
+  return new_map
+end
+
+maps.n = change_leader(maps.n)
 astronvim.set_mappings(astronvim.user_plugin_opts("mappings", maps))
