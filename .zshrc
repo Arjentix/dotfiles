@@ -118,5 +118,6 @@ alias l='lsd'
 alias vim='nvim'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias getopt='gnu-getopt'
+alias nv='neovide'
 
 export PATH=/opt/homebrew/bin:$PATH
